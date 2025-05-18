@@ -68,7 +68,7 @@ httpServer.listen(PORT, () => {
     "------------------------------------------------------------------------",
   );
   console.log(`WebSocket server running on http://${IP}:${PORT}`);
-  console.log("Environment: ", process.env.environment!);
+  console.log("Environment: ", process.env.NODE_ENV!);
   console.log(
     "------------------------------------------------------------------------",
   );
