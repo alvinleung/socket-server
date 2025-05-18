@@ -22,15 +22,23 @@ const httpServer = createServer({
 const io = new Server(httpServer, {
   cors: {
     origin: "*", // have a more laxed policy as a proof of concept
-  }
+  },
 });
 
 io.on("connection", (socket: Socket) => {
   console.log("Client connected: ", socket.id);
 
+  // join the only room in the server
+  socket.join("room");
+
   socket.on("message", (msg) => {
     console.log(`Message from ${socket.id}`, msg);
-    socket.emit("reply", `Server received: ${msg}`);
+
+    // broadcast the message to the room
+    socket.to("room").emit("message", {
+      userId: socket.id,
+      content: msg,
+    });
   });
 
   socket.on("disconnect", () => {
