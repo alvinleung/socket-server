@@ -4,6 +4,9 @@ import { createServer } from "https";
 import { networkInterfaces } from "os";
 import { Server, Socket } from "socket.io";
 
+import dotenv from "dotenv";
+dotenv.config(); // Load .env
+
 const keyPath = process.env.SSL_KEY_PATH!;
 const certPath = process.env.SSL_CERT_PATH!;
 
