@@ -4,7 +4,12 @@
   "description": "a simple socket server exercise",
   "main": "server.ts",
   "scripts": {
-    "start": "ts-node server.ts"
+    "build": "tsc",
+    "start": "pm2 start dist/server.js --name my-server",
+    "restart": "pm2 restart my-server || pm2 start dist/server.js --name my-server",
+    "stop": "pm2 stop my-server",
+    "delete": "pm2 delete my-server",
+    "dev": "pm2 start server.ts --name my-server --interpreter ./node_modules/.bin/ts-node --watch"
   },
   "author": "Alvin Leung",
   "license": "ISC",
