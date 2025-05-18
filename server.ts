@@ -36,7 +36,15 @@ io.on("connection", (socket: Socket) => {
     console.log(`Message from ${socket.id}`, msg);
 
     // broadcast the message to the room
-    socket.to("room").emit("message", {
+
+    // this would not emit to the rest of the room
+    // socket.to("room").emit("message", {
+    //   userId: socket.id,
+    //   content: msg,
+    // });
+
+    // this emit to the rest of the room
+    io.to("room").emit("message", {
       userId: socket.id,
       content: msg,
     });
