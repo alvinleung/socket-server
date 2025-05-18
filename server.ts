@@ -21,11 +21,16 @@ const httpServer = createServer({
 // create https server
 const io = new Server(httpServer, {
   cors: {
-    // origin: "*",
-    origin: ["https://127.0.0.1/", "potential-deployement-server"],
-    methods: ["GET", "POST"],
-    credentials: true
-  },
+    origin: (origin, callback) => {
+      const allowedOrigins = ["https://localhost:3000", "https://yourdomain.com"];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }
 });
 
 io.on("connection", (socket: Socket) => {
