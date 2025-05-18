@@ -57,5 +57,12 @@ const getSystemIP = () => {
 
 const IP = getSystemIP();
 httpServer.listen(PORT, () => {
+  console.log(
+    "------------------------------------------------------------------------",
+  );
   console.log(`WebSocket server running on http://${IP}:${PORT}`);
+  console.log("Environment: ", process.env.environment!);
+  console.log(
+    "------------------------------------------------------------------------",
+  );
 });
