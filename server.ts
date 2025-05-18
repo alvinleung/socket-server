@@ -21,9 +21,10 @@ const httpServer = createServer({
 // create https server
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    // origin: "*",
+    origin: ["https://127.0.0.1/", "potential-deployement-server"],
     methods: ["GET", "POST"],
-    // credentials: true
+    credentials: true
   },
 });
 
