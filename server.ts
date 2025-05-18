@@ -1,11 +1,25 @@
-import { createServer } from "http";
+import fs from "fs";
+import path from "path";
+import { createServer } from "https";
 import { networkInterfaces } from "os";
 import { Server, Socket } from "socket.io";
 
-const httpServer = createServer();
+const keyPath = process.env.SSL_KEY_PATH!;
+const certPath = process.env.SSL_CERT_PATH!;
+
+// Read SSL certificate
+const key = fs.readFileSync(path.resolve(keyPath), "utf8");
+const cert = fs.readFileSync(path.resolve(certPath), "utf8");
+const httpServer = createServer({
+  key,
+  cert,
+});
+
+// create https server
 const io = new Server(httpServer, {
   cors: {
     origin: "*",
+    methods: ["GET", "POST"],
   },
 });
 
