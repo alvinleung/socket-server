@@ -1,0 +1,11 @@
+{
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "compilerOptions": {
+    "module": "ESNext"
+  }
+}
