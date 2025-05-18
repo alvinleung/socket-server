@@ -5,11 +5,11 @@
   "main": "server.ts",
   "scripts": {
     "build": "tsc",
-    "start": "pm2 start dist/server.js --name my-server",
-    "restart": "pm2 restart my-server || pm2 start dist/server.js --name my-server",
-    "stop": "pm2 stop my-server",
-    "delete": "pm2 delete my-server",
-    "dev": "pm2 start server.ts --name my-server --interpreter ./node_modules/.bin/ts-node --watch"
+    "start": "pm2 start dist/server.js --name socket-server",
+    "restart": "pm2 restart my-server || pm2 start dist/server.js --name socket-server",
+    "stop": "pm2 stop socket-server",
+    "delete": "pm2 delete socket-server",
+    "dev": "pm2 start server.ts --name socket-server --interpreter ./node_modules/.bin/ts-node --watch"
   },
   "author": "Alvin Leung",
   "license": "ISC",
