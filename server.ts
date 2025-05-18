@@ -21,15 +21,7 @@ const httpServer = createServer({
 // create https server
 const io = new Server(httpServer, {
   cors: {
-    origin: (origin, callback) => {
-      const allowedOrigins = ["https://localhost:3000", "https://yourdomain.com"];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: "*", // have a more laxed policy as a proof of concept
   }
 });
 
