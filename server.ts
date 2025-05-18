@@ -27,6 +27,7 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket: Socket) => {
   console.log("Client connected: ", socket.id);
+  console.log("Client address: ", socket.handshake.address);
 
   // join the only room in the server
   socket.join("room");
